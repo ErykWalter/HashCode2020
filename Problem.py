@@ -7,7 +7,7 @@ class Problem:
         self.already_scanned_books = set()
         self.already_scanned_libraries = list()
         self.all_libraries = libraries
-        self.libraries_order = set()
+        self.libraries_order = list()
         
     def __str__(self):
         text = f"Num_of_books: {self.num_of_books},\nNum_of_libraries: {self.num_of_libraries},\nAvailable_days: {self.num_of_days}\n"
@@ -19,4 +19,19 @@ class Problem:
         
     def set_book_values(self, book_values : list):
         self.book_values = book_values
+        
+    def output(self) -> None:
+        day = 0
+        num_of_libs = 0
+        text = ""
+        for lib in self.libraries_order:
+            if day > self.num_of_days:
+                break
+            num_of_libs += 1
+            text += lib.get_output(self.num_of_days, day)
+            day += lib.days_to_sign_up
+        print(f"{num_of_libs}", text, sep = "\n")
+        
+    def evaluate(self):
+        return sum(map(lambda idx: self.book_values[idx], self.already_scanned_books))
         

@@ -4,9 +4,10 @@ from Problem import Problem
 from ProblemStupidGreedy import ProblemStupidGreedy
 from input_parser import parse
 from Library import Library
+from ProblemImprovedGreedy import ProblemImprovedGreedy
 
 def main():
-    problem = parse(ProblemStupidGreedy)
+    problem = parse(ProblemImprovedGreedy)
     problem.solve()
     problem.output()
     
