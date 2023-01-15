@@ -11,7 +11,8 @@ def parse( data : str ) -> Problem:
                          
     for line in range(2, num_of_libs*2 + 2, 2):
         num_of_books_in_lib, signup_time, books_per_day = map(int, lines_of_input[line].split())
-        if (signup_time > 
+        if (signup_time > num_of_days-1):
+            continue
         
         bookIDs = list(set(map(int, lines_of_input[line+1].split())))
         bookIDs.sort(key = lambda x: books_values[x], reverse = True)
