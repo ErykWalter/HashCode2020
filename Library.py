@@ -7,14 +7,42 @@ class Library:
         self.books_per_day = books_per_day
         self.book_ids = set()
         self.scanning_order = list()
+        self.score = 0
     
     def set_book_ids(self, book_ids):
         self.book_ids = book_ids
         
-    def update_book_ids(self, books_to_delete : set):
-        self.book_ids.difference_update(books_delete)
+    # def update_book_ids(self, books_to_delete : set):
+    #     common_books = self.book_ids & books_to_delete
+    #     self.book_ids = dict(filter(lambda key: key not in common_books))
         
     def __str__(self):
         return f"LibID: {self.id};\nSignup: {self.days_to_sign_up},\nBooks_per_day: {self.books_per_day},\nBooks: {self.book_ids}\n"
-            
+    
+    def get_score(self, last_day : int, start_day = -1) -> int:
+        if (start_day < self.days_to_sign_up):
+            start_day = self.days_to_sign_up
+        values = [val for i, val in enumerate(self.book_ids.values()) if i < (last_day - start_day) * self.books_per_day]
+        # score = sum(values)
+        # self.score = score
+        return sum(values)
+    
+    def get_output(self, last_day, start_day = -1) -> str:
+        if (start_day < self.days_to_sign_up):
+            start_day = self.days_to_sign_up
         
+        bound = (last_day - start_day) * self.books_per_day
+        text = f"{self.id} {min(bound, len(self.book_ids))}\n"
+        
+        for i, idx in enumerate(self.book_ids.keys()):
+            if i >= bound:
+                break
+            text += (str(idx) + " ")
+        text += "\n"
+        return text
+    
+    def get_scanned_books(self, last_day, start_day = -1) -> set:
+        if (start_day < self.days_to_sign_up):
+            start_day = self.days_to_sign_up
+            
+        bound = (last_day - start_day) * self.books_per_day
