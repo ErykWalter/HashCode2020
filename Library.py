@@ -8,9 +8,13 @@ class Library:
         self.book_ids = set()
         self.scanning_order = list()
     
-    def set_book_ids(book_ids : set):
+    def set_book_ids(self, book_ids):
         self.book_ids = book_ids
         
-    def update_book_ids(books_to_delete : set):
+    def update_book_ids(self, books_to_delete : set):
         self.book_ids.difference_update(books_delete)
+        
+    def __str__(self):
+        return f"LibID: {self.id};\nSignup: {self.days_to_sign_up},\nBooks_per_day: {self.books_per_day},\nBooks: {self.book_ids}\n"
+            
         
