@@ -52,6 +52,8 @@ class Library:
     def get_scanned_books(self, last_day, start_day = -1) -> set:
         if (start_day < self.days_to_sign_up):
             start_day = self.days_to_sign_up
+        else:
+            start_day = start_day + self.days_to_sign_up
             
         if (start_day > last_day):
             return set()
@@ -60,6 +62,9 @@ class Library:
         return set(self.book_order[:bound])
     
     def get_random_books(self, last_day, start_day = -1):
-        random.shuffle(self.book_order)
+        start_idx = len(self.book_order) // 3
+        shuffled = self.book_order[start_idx:]
+        random.shuffle(self.book_order[start_idx:])
+        self.book_order[start_idx:] = shuffled
         return set(self.book_order[:(last_day - start_day) * self.books_per_day])
         
