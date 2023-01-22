@@ -7,7 +7,7 @@ class Library:
         self.num_of_books = num_of_books
         self.days_to_sign_up = days_to_signup
         self.books_per_day = books_per_day
-        self.book_ids = set()
+        self.book_ids = dict()
         self.book_order = list()
         self.score = 0
     

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from Problem import Problem
-from ProblemStupidGreedy import ProblemStupidGreedy
+from ProblemDummyGreedy import ProblemDummyGreedy
 from input_parser import parse
 from Library import Library
 from ProblemImprovedGreedy import ProblemImprovedGreedy
