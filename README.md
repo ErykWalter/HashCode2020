@@ -1,6 +1,3 @@
-### Author: Eryk Walter 
-### ID: 151931
-
 My solution was to use some kind of lacal search, because finding quite good order of libraries is quite easy, I decided to randomize order of sending books by selecting random 5 of themand then shuffling their order of sending books.<br>
 <br>
 Project info:<br>
